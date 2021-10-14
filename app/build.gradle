@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: "tv.athena.sonar"
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
@@ -24,6 +24,19 @@ android {
     }
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectName", "soulove"
+        property "sonar.projectKey", "soulove-sonar"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.login", "admin"
+        property "sonar.password", "shuji"
+//        property "sonar.report.export.path", "H:/sonar/hellosonar"
+        property "sonar.scanner.keepReport", "true"
+//        property "sonar.verbose", "true"
+//        property "sonar.scanner.dumpToFile", "sonar-file.txt"
+    }
+}
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
