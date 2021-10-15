@@ -57,24 +57,25 @@ public class SonarQubeTask extends ConventionTask {
     public void log(String formattedMessage, Level level) {
       switch (level) {
         case TRACE:
-          System.out.println("[DisplaySonarIssue] trace: " + formattedMessage);
+//          System.out.println("[DisplaySonarIssue] trace: " + formattedMessage);
           LOGGER.trace(formattedMessage);
           return;
         case DEBUG:
-          System.out.println("[DisplaySonarIssue] debug: " + formattedMessage);
+//          System.out.println("[DisplaySonarIssue] debug: " + formattedMessage);
           LOGGER.debug(formattedMessage);
           return;
         case INFO:
-          System.out.println("[DisplaySonarIssue] info: " + formattedMessage);
+//          System.out.println("[DisplaySonarIssue] info: " + formattedMessage);
           LOGGER.info(formattedMessage);
           return;
         case WARN:
-          System.err.println("[DisplaySonarIssue] warn: " + formattedMessage);
-          LOGGER.warn(formattedMessage);
-          throw new RuntimeException(formattedMessage);
-//          return;
+//          System.err.println("[DisplaySonarIssue] warn: " + formattedMessage);
+//          LOGGER.warn(formattedMessage);
+          showError(formattedMessage);
+
+          return;
         case ERROR:
-          System.out.println("[DisplaySonarIssue] error: " + formattedMessage);
+//          System.out.println("[DisplaySonarIssue] error: " + formattedMessage);
           LOGGER.error(formattedMessage);
           return;
         default:
@@ -83,6 +84,9 @@ public class SonarQubeTask extends ConventionTask {
     }
   }
 
+  private static void showError(String msg){
+    throw new IllegalArgumentException(msg);
+  }
   private Map<String, String> sonarProperties;
 
   @TaskAction
