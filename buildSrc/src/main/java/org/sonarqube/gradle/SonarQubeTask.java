@@ -50,9 +50,9 @@ public class SonarQubeTask extends ConventionTask {
 
   private static final Logger LOGGER = Logging.getLogger(SonarQubeTask.class);
 
-  private static final LogOutput LOG_OUTPUT = new DefaultLogOutput();
+  public static final LogOutput LOG_OUTPUT = new DefaultLogOutput();
 
-  private static class DefaultLogOutput implements LogOutput {
+  public static class DefaultLogOutput implements LogOutput {
     @Override
     public void log(String formattedMessage, Level level) {
       switch (level) {
